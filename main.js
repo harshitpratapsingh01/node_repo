@@ -4,30 +4,36 @@ const app = express();
 const port = 5000;
 
 
-app.get("/calc/:type", (res,req) => {
+app.get("/calc/:type", (req,res) => {
     const a = 5
     const b = 6
     let result;
-    if(res.params.type === "addition"){
+    if(req.params.type === "addition"){
         result = calci.sum(a,b);
     }
-    else if(res.params.type === "substraction"){
+    else if(req.params.type === "substraction"){
         result = calci.sub(a,b);
     }
-    else if(res.params.type === "multiply"){
+    else if(req.params.type === "multiply"){
         result = calci.mul(a,b);
     }
-    else if(res.params.type === "power"){
+    else if(req.params.type === "power"){
         result = calci.pow(a,b);
     }
-    else if(res.params.type === "sqrt"){
+    res.send(`${req.params.type} of ${a} and ${b} is ${result}`);
+});
+
+app.get("/adv_calc/:type", (req,res) => {
+    const a = 25
+    let result;
+    if(req.params.type === "sqrt"){
         result = calci.sqrt(a);
     }
-    else if(res.params.type === "log"){
+    else if(req.params.type === "log"){
         result = calci.log(a);
     }
-    req.send(`${res.params.type} of ${a} and ${b} is ${result}`);
-});
+    res.send(`${req.params.type} of ${a} is ${result}`);
+})
 
 // app.get("/mul", (res,req) => {
 //     let a = 5;
