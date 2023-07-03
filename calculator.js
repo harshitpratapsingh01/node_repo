@@ -22,5 +22,9 @@ module.exports = {
 
     log: (a) => {
         return Math.log(a);
+    },
+
+    percent: (a,b) => {
+        return (a/b) * 100;
     }
 }

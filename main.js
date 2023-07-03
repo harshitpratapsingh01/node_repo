@@ -20,6 +20,9 @@ app.get("/calc/:type", (req,res) => {
     else if(req.params.type === "power"){
         result = calci.pow(a,b);
     }
+    else if(req.params.type == "percentage"){
+        result = calci.percent(a,b);
+    }
     res.send(`${req.params.type} of ${a} and ${b} is ${result}`);
 });
 
