@@ -20,23 +20,19 @@ app.get("/calc/:type", (req,res) => {
     else if(req.params.type === "power"){
         result = calci.pow(a,b);
     }
-    else if(req.params.type == "percentage"){
-        result = calci.percent(a,b);
-    }
-    res.send(`${req.params.type} of ${a} and ${b} is ${result}`);
-});
-
-app.get("/adv_calc/:type", (req,res) => {
-    const a = 25
-    let result;
-    if(req.params.type === "sqrt"){
+    else if(req.params.type === "sqrt"){
         result = calci.sqrt(a);
     }
     else if(req.params.type === "log"){
         result = calci.log(a);
     }
-    res.send(`${req.params.type} of ${a} is ${result}`);
-})
+    else if(req.params.type == "percentage"){
+        result = calci.percent(a,b);
+    }
+    res.send(`Ans is: ${result}`);
+});
+
+
 
 // app.get("/mul", (res,req) => {
 //     let a = 5;
@@ -72,6 +68,6 @@ app.get("/adv_calc/:type", (req,res) => {
 // });
 
 app.listen(port, () => {
-    console.log(`listining on port ${port}`);
+    console.log(`listening on port ${port}`);
 });
 
