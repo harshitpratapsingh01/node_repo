@@ -6,6 +6,8 @@ const port = 3001;
 app.use(express.json());
 
 app.post('/calci', (req,res) => {
+
+    console.log(req.body);
     const{type,n1,n2} = req.body;
 
     let ans;
@@ -43,7 +45,7 @@ app.post('/calci', (req,res) => {
             ans = "Invalid";
     }
 
-    res.send(`ANS : ${ans}`);
+    res.send(`Result is : ${ans}`);
 });
 app.listen(port, () => {
     console.log(`Listening ${port}`);
