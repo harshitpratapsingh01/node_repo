@@ -4,12 +4,12 @@ const port = 3000;
 
 
 const cb0 = function (req, res, next) {
-    res.send('CB0')
+    console.log('CB0')
     next()
   }
   
   const cb1 = function (req, res, next) {
-    res.send('CB1')
+    console.log('CB1')
     next()
   }
   
