@@ -24,15 +24,36 @@ let details = [
 
 
 
-app.get('/', (req, res) => {
-    res.send(details);
-    console.log(req);
+app.get('/:id', (req, res) => {
+    try{
+        const id = Number(req.params.id);
+        const user = details.find((find_id) => find_id.id === id);
+        if(user){
+            res.status(200).json(user);
+        }
+        else{
+            res.status(500).send("User Not Found");
+        }
+        // res.json(details);
+        // console.log(req);
+    }
+    catch{
+        res.status(500).send("Server error");
+    }
 });
 
 app.post('/', (req, res) => {
-    const add_data = req.body;
-    details.push(add_data);
-    res.send(details);
+    try{
+        if(Object.keys(details).length !=0){
+            
+        }
+        const add_data = req.body;
+        details.push(add_data);
+        res.status(200).json(details);
+    }
+    catch{
+        res.status(400).send("Bad Request");
+    }
 });
 
 app.put('/:id', (req, res) => {
@@ -60,11 +81,11 @@ app.delete('/:id', (req,res) => {
     console.log(newDetail);
 
     if(!newDetail){
-        res.send("error");
+        res.json("error");
     }
     else{
         details = newDetail;
-        res.send(details);
+        res.json(details);
     }
 });
 

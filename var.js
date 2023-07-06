@@ -15,5 +15,9 @@
 
 // // console.log(a);
 
-console.log(a);
-let a = 5;
+// console.log(a);
+// let a = 5;
+
+const http = require('http');
+
+console.log(http.STATUS_CODES);
