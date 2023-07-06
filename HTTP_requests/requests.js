@@ -22,12 +22,11 @@ let details = [
     }
 ];
 
-app.head('/', (req,res)=>{
-    res.set('user','value');
-});
+
 
 app.get('/', (req, res) => {
     res.send(details);
+    console.log(req);
 });
 
 app.post('/', (req, res) => {
@@ -39,6 +38,7 @@ app.post('/', (req, res) => {
 app.put('/:id', (req, res) => {
     const id = Number(req.params.id);
     const body = req.body;
+    
     const person = details.find((account) => account.id === id);
     const index = details.indexOf(person);
 
@@ -84,6 +84,9 @@ app.patch('/:id', (req, res) => {
     res.send(details);
 
 });
+app.get('/new', (req,res) => {
+    res.send()
+})
 
 app.listen(port, () => {
     console.log(`listening at: ${port}`);
